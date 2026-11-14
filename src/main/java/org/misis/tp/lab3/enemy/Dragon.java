@@ -2,6 +2,7 @@ package org.misis.tp.lab3.enemy;
 
 import org.misis.tp.lab3.combat.Hit;
 import org.misis.tp.lab3.core.Dice;
+import org.misis.tp.lab3.defense.ArmorHandler;
 
 public class Dragon extends AbstractEnemy {
     private static final double RESISTANCE = 0.25;
@@ -9,7 +10,7 @@ public class Dragon extends AbstractEnemy {
     private static final int FIRE_BREATH_MULTIPLIER = 2;
 
     public Dragon() {
-        super("dragon", "Дракон", 260, 16, 22, 500, 400);
+        super("dragon", "Дракон", 260, 16, 22, 500, 400, new ArmorHandler(RESISTANCE));
     }
 
     @Override
@@ -19,10 +20,5 @@ public class Dragon extends AbstractEnemy {
             return new Hit(bite.damage() * FIRE_BREATH_MULTIPLIER, true);
         }
         return bite;
-    }
-
-    @Override
-    protected int reduceDamage(int damage) {
-        return (int) Math.round(damage * (1 - RESISTANCE));
     }
 }

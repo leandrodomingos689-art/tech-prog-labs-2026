@@ -1,6 +1,11 @@
 package org.misis.tp.lab3.hero;
 
 import org.misis.tp.lab3.core.UnknownCodeError;
+import org.misis.tp.lab3.defense.ArmorHandler;
+import org.misis.tp.lab3.defense.BarrierHandler;
+import org.misis.tp.lab3.defense.DamageHandler;
+import org.misis.tp.lab3.defense.EvasionHandler;
+import org.misis.tp.lab3.item.Armor;
 import org.misis.tp.lab3.item.ItemCatalog;
 import org.misis.tp.lab3.kit.MageKitFactory;
 import org.misis.tp.lab3.kit.RangerKitFactory;
@@ -27,6 +32,29 @@ public enum HeroClass {
 
     public StarterKitFactory starterKit(ItemCatalog catalog) {
         return factoryConstructor.apply(catalog);
+    }
+
+    public DamageHandler createDefense(Armor armor, int level) {
+        double evasion = this == RANGER ? 0.15 : 0;
+        int barrier = this == MAGE ? 30 : 0;
+        if (this == WARRIOR && level >= 3) {
+            barrier = 20;
+        } else if (this == RANGER && level >= 5) {
+            barrier = 15;
+        } else if (this == MAGE && level >= 3) {
+            evasion = 0.10;
+        }
+        double defenseValue = armor != null ? armor.getDefense() : 0.0;
+        DamageHandler armorHandler = new ArmorHandler(defenseValue);
+        DamageHandler first = armorHandler;
+        if (evasion > 0) {
+            first = new EvasionHandler(evasion);
+            first.setNext(armorHandler);
+        }
+        if (barrier > 0) {
+            armorHandler.setNext(new BarrierHandler(barrier));
+        }
+        return first;
     }
 
     public String getCode() { return code; }

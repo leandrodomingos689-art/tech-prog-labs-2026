@@ -1,5 +1,7 @@
 package org.misis.tp.lab3.combat;
 
+import org.misis.tp.lab3.defense.Damage;
+
 public interface Combatant {
     String getCode();
     String getName();
@@ -7,5 +9,5 @@ public interface Combatant {
     int getMaxHealth();
     boolean isAlive();
     Hit rollDamage();
-    int receiveHit(int damage);
+    Damage receiveHit(int damage);
 }

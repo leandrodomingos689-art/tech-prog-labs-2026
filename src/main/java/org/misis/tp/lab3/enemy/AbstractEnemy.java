@@ -2,6 +2,8 @@ package org.misis.tp.lab3.enemy;
 
 import org.misis.tp.lab3.combat.Hit;
 import org.misis.tp.lab3.core.Dice;
+import org.misis.tp.lab3.defense.Damage;
+import org.misis.tp.lab3.defense.DamageHandler;
 
 public abstract class AbstractEnemy implements Enemy {
     private final String code;
@@ -11,9 +13,16 @@ public abstract class AbstractEnemy implements Enemy {
     private final int maxDamage;
     private final int experienceReward;
     private final int goldReward;
-    private int health;
+    private final DamageHandler defense;
+    private int currentHealth;
 
-    protected AbstractEnemy(String code, String name, int maxHealth, int minDamage, int maxDamage, int experienceReward, int goldReward) {
+    protected AbstractEnemy(String code, String name, int maxHealth, int minDamage, int maxDamage,
+                            int experienceReward, int goldReward) {
+        this(code, name, maxHealth, minDamage, maxDamage, experienceReward, goldReward, null);
+    }
+
+    protected AbstractEnemy(String code, String name, int maxHealth, int minDamage, int maxDamage,
+                            int experienceReward, int goldReward, DamageHandler defense) {
         this.code = code;
         this.name = name;
         this.maxHealth = maxHealth;
@@ -21,8 +30,16 @@ public abstract class AbstractEnemy implements Enemy {
         this.maxDamage = maxDamage;
         this.experienceReward = experienceReward;
         this.goldReward = goldReward;
-        this.health = maxHealth;
+        this.defense = defense;
+        this.currentHealth = maxHealth;
     }
+
+    @Override public String getCode() { return code; }
+    @Override public String getName() { return name; }
+    @Override public int getHealth() { return currentHealth; }
+    @Override public int getMaxHealth() { return maxHealth; }
+    @Override public int getExperienceReward() { return experienceReward; }
+    @Override public boolean isAlive() { return currentHealth > 0; }
 
     @Override
     public Hit rollDamage() {
@@ -30,18 +47,17 @@ public abstract class AbstractEnemy implements Enemy {
     }
 
     @Override
-    public int receiveHit(int damage) {
-        int dealt = Math.max(1, reduceDamage(damage));
-        this.health = Math.max(0, this.health - dealt);
-        return dealt;
+    public Damage receiveHit(int amount) {
+        Damage damage = new Damage(amount);
+        if (defense != null) {
+            defense.handle(damage);
+        }
+        currentHealth = Math.max(0, currentHealth - damage.getAmount());
+        return damage;
     }
 
-    protected int reduceDamage(int damage) { return damage; }
-    @Override public boolean isAlive() { return health > 0; }
-    @Override public int rollGoldReward() { return Dice.getInstance().roll(goldReward / 2, goldReward); }
-    @Override public int getExperienceReward() { return experienceReward; }
-    @Override public String getCode() { return code; }
-    @Override public String getName() { return name; }
-    @Override public int getHealth() { return health; }
-    @Override public int getMaxHealth() { return maxHealth; }
+    @Override
+    public int rollGoldReward() {
+        return Dice.getInstance().roll(goldReward / 2, goldReward);
+    }
 }
