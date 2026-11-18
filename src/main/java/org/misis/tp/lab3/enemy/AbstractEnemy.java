@@ -1,7 +1,7 @@
 package org.misis.tp.lab3.enemy;
 
 import org.misis.tp.lab3.combat.Hit;
-import org.misis.tp.lab3.core.Dice;
+import org.misis.tp.lab3.Dice;
 import org.misis.tp.lab3.defense.Damage;
 import org.misis.tp.lab3.defense.DamageHandler;
 

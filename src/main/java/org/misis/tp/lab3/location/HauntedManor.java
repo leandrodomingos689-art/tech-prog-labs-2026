@@ -1,6 +1,6 @@
 package org.misis.tp.lab3.location;
 
-import org.misis.tp.lab3.core.Dice;
+import org.misis.tp.lab3.Dice;
 import org.misis.tp.lab3.enemy.Enemy;
 import org.misis.tp.lab3.enemy.HauntedWeapon;
 import org.misis.tp.lab3.item.DefaultCatalog;

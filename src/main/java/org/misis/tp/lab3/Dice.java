@@ -1,4 +1,4 @@
-package org.misis.tp.lab3.core;
+package org.misis.tp.lab3;
 
 import java.util.List;
 import java.util.Random;

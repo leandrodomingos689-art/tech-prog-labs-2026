@@ -1,7 +1,6 @@
 package org.misis.tp.lab3;
 
 import org.misis.tp.lab3.combat.Outcome;
-import org.misis.tp.lab3.core.Dice;
 import org.misis.tp.lab3.defense.*;
 import org.misis.tp.lab3.enemy.*;
 import org.misis.tp.lab3.event.GameEvent;

@@ -1,6 +1,6 @@
 package org.misis.tp.lab3.progress;
 
-import org.misis.tp.lab3.core.UnknownCodeError;
+import org.misis.tp.lab3.UnknownCodeError;
 
 public enum Achievement {
     FIRST_BLOOD("first-blood", "Первая кровь", "одержать первую победу"),

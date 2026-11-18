@@ -1,6 +1,6 @@
 package org.misis.tp.lab3.hero;
 
-import org.misis.tp.lab3.core.UnknownCodeError;
+import org.misis.tp.lab3.UnknownCodeError;
 import org.misis.tp.lab3.defense.ArmorHandler;
 import org.misis.tp.lab3.defense.BarrierHandler;
 import org.misis.tp.lab3.defense.DamageHandler;

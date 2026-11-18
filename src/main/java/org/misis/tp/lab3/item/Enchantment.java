@@ -1,6 +1,6 @@
 package org.misis.tp.lab3.item;
 
-import org.misis.tp.lab3.core.UnknownCodeError;
+import org.misis.tp.lab3.UnknownCodeError;
 import java.util.List;
 import java.util.stream.Stream;
 

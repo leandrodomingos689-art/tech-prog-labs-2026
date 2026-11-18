@@ -1,6 +1,6 @@
 package org.misis.tp.lab3.defense;
 
-import org.misis.tp.lab3.core.Dice;
+import org.misis.tp.lab3.Dice;
 
 public class EvasionHandler extends DamageHandler {
     private final double chance;

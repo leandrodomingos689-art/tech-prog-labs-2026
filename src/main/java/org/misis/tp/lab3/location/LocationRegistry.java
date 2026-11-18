@@ -1,6 +1,6 @@
 package org.misis.tp.lab3.location;
 
-import org.misis.tp.lab3.core.UnknownCodeError;
+import org.misis.tp.lab3.UnknownCodeError;
 
 import java.util.LinkedHashMap;
 import java.util.List;

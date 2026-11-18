@@ -3,7 +3,7 @@ package org.misis.tp.lab3.location;
 import org.misis.tp.lab3.combat.Battle;
 import org.misis.tp.lab3.combat.BattleReport;
 import org.misis.tp.lab3.combat.Outcome;
-import org.misis.tp.lab3.core.Dice;
+import org.misis.tp.lab3.Dice;
 import org.misis.tp.lab3.enemy.ArmoredEnemy;
 import org.misis.tp.lab3.enemy.Enemy;
 import org.misis.tp.lab3.enemy.LegendaryEnemy;

@@ -1,7 +1,7 @@
 package org.misis.tp.lab3.item;
 
 import org.misis.tp.lab3.combat.Hit;
-import org.misis.tp.lab3.core.Dice;
+import org.misis.tp.lab3.Dice;
 
 public class Bow extends Weapon {
     private static final int CRITICAL_MULTIPLIER = 2;

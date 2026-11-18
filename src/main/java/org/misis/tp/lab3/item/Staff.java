@@ -1,7 +1,7 @@
 package org.misis.tp.lab3.item;
 
 import org.misis.tp.lab3.combat.Hit;
-import org.misis.tp.lab3.core.Dice;
+import org.misis.tp.lab3.Dice;
 
 public class Staff extends Weapon {
     private final double scatter;

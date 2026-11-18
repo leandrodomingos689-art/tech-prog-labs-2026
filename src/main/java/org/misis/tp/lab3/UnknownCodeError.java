@@ -1,4 +1,4 @@
-package org.misis.tp.lab3.core;
+package org.misis.tp.lab3;
 
 public class UnknownCodeError extends RuntimeException {
     public UnknownCodeError(String what, String code) {
